@@ -1,25 +1,192 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31727.386
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Halloween", "Halloween\Halloween.csproj", "{0A54D5B6-F445-4D07-A596-5DD4FB27D691}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0A54D5B6-F445-4D07-A596-5DD4FB27D691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A54D5B6-F445-4D07-A596-5DD4FB27D691}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A54D5B6-F445-4D07-A596-5DD4FB27D691}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A54D5B6-F445-4D07-A596-5DD4FB27D691}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {50F9C40D-4224-45EC-A151-3912453E9802}
-	EndGlobalSection
-EndGlobal
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Halloween
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+            Explanation: 
+            variables:
+            user = input used to hold a name of user, this is later used to send a message with their name in it later
+            weapon = input from user of which weapon they would like to take
+            temp = stores the input of what weapon they would like as a string therefore so that it can be tested to see if it can be converted to an integer or not
+            a = kinda forgot how to do the do while loop so I created another variable and that sorta fixed it
+            monsterArray = holds the three monsters that are randomly generated (see later)
+            rnd = didn't know how to do a random value so I googled it don't really know if this is needed or not
+            numMonster = set to a random number which then correlates to the index of the array to get a random monster
+            monster = the end string of the random monster
+            what I did:
+            created the name system just by using writelines and one variable
+            more writelines of available weapons which then using a readline and if statements allows a user to pick one having different outcomes with each
+            temp value used to create a system so that data can be checked to be the correct format and if not an error message is sent
+            monster variable is used with an if statement to do invidivual outcomes on certain scenarios
+
+              */
+            Console.WriteLine("What is your name?");
+            string user = Console.ReadLine();
+            Console.WriteLine("There is something lurking in the shadows {0}. Which weapon will you choose?", user);
+            Console.WriteLine("0. No weapon");
+            Console.WriteLine("1. A silver bullet");
+            Console.WriteLine("2. A wooden stake");
+            Console.WriteLine("3. A priest");
+            int weapon = -1;
+            string temp = "a";
+            int a = 0;
+            string[] monsterArray = new string[]{ "vampire", "werewolf", "ghost" };
+            Random rnd = new Random();
+            int numMonster = rnd.Next(0, 2);
+            string monster = monsterArray[numMonster];
+
+            do
+            {
+                temp = (Console.ReadLine());
+
+                try
+                {
+                    weapon = Convert.ToInt32(temp);
+                    a = a + 1;
+                    if (weapon == 1)
+                    {
+                        Console.WriteLine("You have chosen a silver bullet");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        if (monster == "werewolf")
+                        {
+                            Console.WriteLine("You have slain the werewolf good job!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You hide your weapon and you both go your seperate ways.");
+                        }
+                        Console.ReadKey();
+
+                    }
+                    else if (weapon == 2)
+                    {
+                        Console.WriteLine("You have chosen a wooden stake");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        if (monster == "vampire")
+                        {
+                            Console.WriteLine("You have slain the vampire good job!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You hide your weapon and you both go your seperate ways.");
+                        }
+                        Console.ReadKey();
+                    }
+                    else if (weapon == 3)
+                    {
+                        Console.WriteLine("You have chosen a priest");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        if (monster == "ghost")
+                        {
+                            Console.WriteLine("You have slain the ghost good job!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You hide your weapon and you both go your seperate ways.");
+                        }
+                        Console.ReadKey();
+                    }
+                    else if (weapon == 0)
+                    {
+                        weapon = 0;
+                        Console.WriteLine("You have chosen not to take a weapon, brave of you I must say");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        Console.ReadKey();
+                        Console.WriteLine("Weapon-less you flee in terror");
+                    }
+
+                }
+                catch
+                {
+                    Console.WriteLine("Error with data input please try again.");
+
+                    if (weapon == 1)
+                    {
+                        Console.WriteLine("You have chosen a silver bullet");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        if (monster == "werewolf")
+                        {
+                            Console.WriteLine("You have slain the werewolf good job!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You hide your weapon and you both go your seperate ways.");
+                        }
+                        Console.ReadKey();
+
+                    }
+                    else if (weapon == 2)
+                    {
+                        Console.WriteLine("You have chosen a wooden stake");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        if (monster == "vampire")
+                        {
+                            Console.WriteLine("You have slain the vampire good job!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You hide your weapon and you both go your seperate ways.");
+                        }
+                        Console.ReadKey();
+                    }
+                    else if (weapon == 3)
+                    {
+                        Console.WriteLine("You have chosen a priest");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        if (monster == "ghost")
+                        {
+                            Console.WriteLine("You have slain the ghost good job!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("You hide your weapon and you both go your seperate ways.");
+                        }
+                        Console.ReadKey();
+                    }
+                    else if (weapon == 0)
+                    {
+                        weapon = 0;
+                        Console.WriteLine("You have chosen not to take a weapon, brave of you I must say");
+                        Console.ReadKey();
+                        Console.WriteLine("The shape in the shadows moves towards you.  Closer and closer it comes until you can tell it is a...");
+                        Console.ReadKey();
+                        Console.WriteLine("... {0}!", monster);
+                        Console.ReadKey();
+                        Console.WriteLine("Weapon-less you flee in terror");
+                    }
+
+
+                } while (a == 0) ;
+
+
+                Console.ReadKey();
+            }
